@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact - Joc de Educație Financiară</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+  <script src="assets/config.js"></script>
+</head>
+<body class="contact-page">
+  <!-- Animated background orbs -->
+  <div class="floating-orb orb-1"></div>
+  <div class="floating-orb orb-2"></div>
+  <div class="floating-orb orb-3"></div>
+
+  <!-- Header cu Navigație și Titlu pe aceeași linie -->
+  <header class="site-header">
+    <div class="container header-content header-inline">
+      <div class="header-left">
+        <a href="index.html" class="nav-logo">Joc Educație Financiară</a>
+        <span class="header-divider">/</span>
+        <h1>Contact - Suport Jucători</h1>
+      </div>
+      
+      <nav class="nav-menu">
+        <a href="index.html" class="nav-link">Acasă</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Pagina de contact -->
+  <main class="container main-layout">
+    <section class="intro-card">
+      <div class="welcome-section" style="background: rgba(59, 130, 246, 0.1); padding: 1.5rem; border-radius: 0.75rem; border-left: 4px solid #3b82f6; margin-bottom: 2rem;">
+        <h2 style="margin-top: 0; color: #60a5fa;">✉️ Contactează-ne</h2>
+        <p style="font-size: 1.05rem; color: #cbd5f5; margin: 0;">Ai o întrebare sau sugestie? Trimite-ne un mesaj și vom răspunde cât mai curând.</p>
+      </div>
+      
+      <form id="formularContact" style="display: flex; flex-direction: column; gap: 1.25rem;">
+        <div class="form-group">
+          <label for="nume">👤 Numele tău:</label>
+          <input type="text" id="nume" name="nume" placeholder="Introduceți numele complet" required>
+        </div>
+
+        <div class="form-group">
+          <label for="email">📧 E-mailul tău:</label>
+          <input type="email" id="email" name="email" placeholder="exemplu@email.com" required>
+        </div>
+
+        <div class="form-group">
+          <label for="mesaj">💬 Mesajul tău:</label>
+          <textarea id="mesaj" name="mesaj" placeholder="Cu ce te putem ajuta?" required rows="5"></textarea>
+        </div>
+
+        <button type="submit" id="butonTrimite" class="btn-submit">🚀 Trimite mesajul</button>
+      </form>
+      
+      <p id="statusMesaj" class="status-message" style="display:none;"></p>
+    </section>
+
+    <aside class="leaderboard-card">
+      <h2>💡 Informații Utile</h2>
+      <p>Ne străduim să răspundem tuturor mesajelor în cel mai scurt timp posibil.</p>
+      
+      <div style="margin-top: 1.5rem;">
+          <h4 style="color: #93c5fd; margin-bottom: 0.5rem;">Alte metode de contact</h4>
+          <ul style="list-style: none; color: #cbd5f5; font-size: 0.95rem; line-height: 1.6;">
+              <li>📧 <strong>Email:</strong> <a id="linkContactEmail" href="#" style="color: #60a5fa;"></a></li>
+          </ul>
+      </div>
+
+      <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(55, 65, 81, 0.8);">
+        <p class="muted small">Ai o problemă tehnică? Te rugăm să incluzi în mesaj detalii despre browserul folosit și pașii pentru a reproduce problema.</p>
+      </div>
+    </aside>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <small>&copy; 2026 Joc Financiar Educațional </small>
+    </div>
+  </footer>
+
+  <script>
+    // Obținem configurația din config.js (PORT-ul serverului)
+    const API_URL = window.CONFIG?.API_URL || 'http://localhost:3000';
+
+    (function initContactMailto() {
+      const addr = window.CONFIG?.CONTACT_EMAIL || 'genpro066@gmail.com';
+      const link = document.getElementById('linkContactEmail');
+      if (!link) return;
+      const subiect = encodeURIComponent('Contact - Joc Educație Financiară');
+      link.textContent = addr;
+      link.href = 'mailto:' + addr + '?subject=' + subiect;
+    })();
+    
+    // Selectăm formularul
+    const formular = document.getElementById('formularContact');
+    const statusMesaj = document.getElementById('statusMesaj');
+
+    // Ascultăm evenimentul de 'submit' (când se apasă butonul)
+    formular.addEventListener('submit', async function(eveniment) {
+      // Oprim reîncărcarea paginii
+      eveniment.preventDefault(); 
+
+      // Preluăm datele introduse de utilizator
+      const dateFormular = {
+        nume: document.getElementById('nume').value,
+        email: document.getElementById('email').value,
+        mesaj: document.getElementById('mesaj').value
+      };
+
+      try {
+        // Trimitem datele către serverul nostru Node.js
+        const raspuns = await fetch(API_URL + '/trimite-email', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(dateFormular)
+        });
+
+        if (raspuns.ok) {
+          const data = await raspuns.json();
+          statusMesaj.style.display = 'block';
+          statusMesaj.className = 'status-message success';
+          statusMesaj.innerText = '✅ Mesajul a fost trimis cu succes! Îți vom răspunde în curând.';
+          formular.reset(); // Curățăm formularul
+        } else {
+          throw new Error('Eroare la trimitere');
+        }
+      } catch (eroare) {
+        statusMesaj.style.display = 'block';
+        statusMesaj.className = 'status-message error';
+        statusMesaj.innerText = '❌ A apărut o eroare. Te rugăm să încerci din nou.';
+        console.error(eroare);
+      }
+    });
+  </script>
+</body>
+</html>

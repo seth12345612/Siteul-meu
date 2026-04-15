@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clasament - Joc Financiar</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+  <script src="assets/config.js"></script>
+  <style>
+    .leaderboard-container {
+      max-width: 800px;
+      margin: 4rem auto;
+      padding: 2rem;
+      background: rgba(30, 41, 59, 0.7);
+      backdrop-filter: blur(12px);
+      border-radius: 1rem;
+      border: 1px solid rgba(148, 163, 184, 0.1);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    }
+    .nav-back {
+      display: inline-block;
+      margin-bottom: 2rem;
+      color: #93c5fd;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .nav-back:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="floating-orb orb-1"></div>
+  <div class="floating-orb orb-2"></div>
+  
+  <div class="container">
+    <div class="leaderboard-container">
+      <a href="index.html" class="nav-back">&larr; Înapoi la meniu</a>
+      <h1>🏆 Clasament Global</h1>
+      <p style="color: #94a3b8; margin-bottom: 2rem;">Cei mai buni strategi financiari.</p>
+      
+      <div id="leaderboard">
+        <p>Se încarcă clasamentul...</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const API_URL = window.CONFIG?.API_URL || 'http://localhost:3000';
+
+    function escapeHtml(text) {
+      const d = document.createElement('div');
+      d.textContent = text == null ? '' : String(text);
+      return d.innerHTML;
+    }
+
+    window.loadLeaderboard = function () {
+      const container = document.getElementById('leaderboard');
+      fetch(`${API_URL}/scores`)
+        .then((r) => r.json())
+        .then((data) => {
+          if (!data.success || !data.scores || data.scores.length === 0) {
+            container.innerHTML =
+              '<p class="leaderboard-empty">Încă nu există scoruri salvate. Fii primul care joacă!</p>';
+            return;
+          }
+          let html = `
+            <table class="leaderboard-table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Nume</th>
+                  <th>Scor final (RON)</th>
+                  <th>Luni</th>
+                </tr>
+              </thead>
+              <tbody>
+          `;
+          data.scores.forEach((s, i) => {
+            const esc = (t) => escapeHtml(t);
+            html += `
+              <tr>
+                <td>${i + 1}</td>
+                <td>${esc(s.username)}</td>
+                <td>${esc(String(s.score))}</td>
+                <td>${esc(String(s.months))}/12</td>
+              </tr>
+            `;
+          });
+          html += '</tbody></table>';
+          container.innerHTML = html;
+        })
+        .catch(() => {
+          container.innerHTML = '<p class="error">Eroare la încărcarea clasamentului.</p>';
+        });
+    };
+
+    document.addEventListener('DOMContentLoaded', window.loadLeaderboard);
+  </script>
+</body>
+</html>

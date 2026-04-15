@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <title>Joc Financiar - Simulare 12 luni</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <!-- Animated background orbs -->
+  <div class="floating-orb orb-1"></div>
+  <div class="floating-orb orb-2"></div>
+  <div class="floating-orb orb-3"></div>
+  
+  <header class="site-header">
+    <div class="container header-content">
+      <h1>Simulare financiară - 12 luni</h1>
+      <a href="index.html" class="link-secondary">&larr; Înapoi la meniu</a>
+    </div>
+  </header>
+
+  <main class="container game-layout">
+    <section class="game-dashboard">
+      <div class="game-header">
+        <h2 id="scenario-name"></h2>
+        <p id="scenario-description" class="muted"></p>
+        <p id="difficulty-label" class="muted small"></p>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <span class="stat-label">Luna</span>
+          <span id="luna-curenta" class="stat-value">1 / 12</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-label">Bani disponibili</span>
+          <span id="bani-text" class="stat-value">0 RON</span>
+          <div class="progress">
+            <div id="bani-bar" class="progress-bar progress-money"></div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <span class="stat-label">Fericire / Energie</span>
+          <span id="fericire-text" class="stat-value">0%</span>
+          <div class="progress">
+            <div id="fericire-bar" class="progress-bar progress-happiness"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="fixed-expenses">
+        <h3>Cheltuieli fixe lunare</h3>
+        <ul id="cheltuieli-list" class="muted small"></ul>
+      </div>
+
+      <div class="actions centered">
+        <button id="btn-next-month" class="btn-primary">
+          Avansează la săptămâna următoare
+        </button>
+        <button id="btn-stop-endless" class="btn-secondary hidden" style="background-color: #ef4444; border-color: #dc2626; color: white; margin-left: 1rem;">Stop Joc (Salvează)</button>
+      </div>
+
+      <p id="status-message" class="status-message"></p>
+    </section>
+
+    <aside class="history-card">
+      <h2>Istoric decizii</h2>
+      <p class="muted small">La finalul jocului vei primi un rezumat educativ al deciziilor tale.</p>
+      <ol id="history-list" class="history-list"></ol>
+    </aside>
+  </main>
+
+  <!-- Pop-up Eveniment -->
+  <div id="event-modal" class="modal hidden">
+    <div class="modal-backdrop"></div>
+    <div class="modal-content">
+      <h3 id="event-title"></h3>
+      <p id="event-description"></p>
+      <ul id="event-effects" class="muted small"></ul>
+
+      <div id="event-options" class="modal-actions">
+        <!-- Butoanele se vor genera dinamic de JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Ecran final -->
+  <div id="gameover-modal" class="modal hidden">
+    <div class="modal-backdrop"></div>
+    <div class="modal-content">
+      <h2 id="gameover-title"></h2>
+      <p id="gameover-reason"></p>
+
+      <div class="final-stats">
+        <p><strong>Bani finali:</strong> <span id="final-bani"></span> RON</p>
+        <p><strong>Luni supraviețuite:</strong> <span id="final-luni"></span> / 12</p>
+      </div>
+
+      <div class="final-history">
+        <h3>Rezumat educativ al deciziilor</h3>
+        <ol id="final-history-list" class="history-list"></ol>
+      </div>
+
+      <div class="save-score">
+        <h3>Salvează-ți scorul în clasament</h3>
+        <label class="small">
+          Nume jucător:
+          <input type="text" id="username" placeholder="ex: Alex" />
+        </label>
+        <div class="final-actions" style="margin-top: 1rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+          <button id="btn-save-score" class="btn-primary">Salvează scorul</button>
+          <button id="btn-start-endless" class="btn-secondary" style="background-color: #8b5cf6; border-color: #7c3aed; color: white;">Continuă (Mod Endless)</button>
+          <a href="index.html" class="btn-secondary">Înapoi la meniu</a>
+        </div>
+        <p id="save-status" class="small muted"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal autentificare necesară pentru salvare scor -->
+  <div id="login-required-modal" class="modal hidden">
+    <div class="modal-backdrop" onclick="closeLoginRequiredModal()"></div>
+    <div class="modal-content" style="max-width: 460px;">
+      <h2 style="margin-top:0;">Logare necesară</h2>
+      <p style="color:#cbd5f5; line-height:1.6; margin-top:0.5rem;">
+        Ca să salvezi scorul în clasament, ai nevoie de un cont. Poți să te autentifici acum.
+      </p>
+      <div class="modal-actions" style="margin-top:1rem;">
+        <button type="button" class="btn-secondary" onclick="closeLoginRequiredModal()">Nu acum</button>
+        <button type="button" class="btn-primary" onclick="loginFromGameForScore()">Logare și salvează</button>
+      </div>
+      <div style="margin-top:0.75rem;">
+        <button type="button" class="btn-secondary" onclick="continueGuestSave()">Salvează ca invitat (cu nume)</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/config.js?v=3"></script>
+  <script src="assets/events.js?v=3"></script>
+  <script src="assets/game.js?v=4"></script>
+</body>
+</html>
+

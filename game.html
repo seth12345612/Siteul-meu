@@ -14,7 +14,12 @@
   
   <header class="site-header">
     <div class="container header-content">
-      <h1>Simulare financiară - 12 luni</h1>
+      <div class="header-brand">
+        <a href="index.html" onclick="sessionStorage.removeItem('splashShown')" style="display: flex; align-items: center; text-decoration: none; color: inherit;">
+          <img src="generated.svg" alt="Logo" class="nav-logo">
+          <h1>Simulare financiară - 12 luni</h1>
+        </a>
+      </div>
       <a href="index.html" class="link-secondary">&larr; Înapoi la meniu</a>
     </div>
   </header>
@@ -74,6 +79,16 @@
   <div id="event-modal" class="modal hidden">
     <div class="modal-backdrop"></div>
     <div class="modal-content">
+      <div class="modal-stats-badge">
+        <div class="stat-badge-item">
+          <span class="badge-label">Bani:</span>
+          <span id="modal-bani-text" class="badge-value">0 RON</span>
+        </div>
+        <div class="stat-badge-item">
+          <span class="badge-label">Fericire:</span>
+          <span id="modal-fericire-text" class="badge-value">0%</span>
+        </div>
+      </div>
       <h3 id="event-title"></h3>
       <p id="event-description"></p>
       <ul id="event-effects" class="muted small"></ul>

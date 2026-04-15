@@ -116,6 +116,7 @@ a:hover {
   border-bottom: 1px solid rgba(148, 163, 184, 0.3);
   backdrop-filter: blur(10px);
   background: linear-gradient(to right, rgba(15, 23, 42, 0.85), rgba(17, 24, 39, 0.85));
+  padding: 0.5rem 0;
 }
 
 .header-content {
@@ -126,8 +127,26 @@ a:hover {
   gap: 0.75rem;
 }
 
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.nav-logo {
+  width: 85px;
+  height: 85px;
+  filter: drop-shadow(0 0 12px rgba(96, 165, 250, 0.6));
+  transition: transform 0.3s ease;
+}
+
+.nav-logo:hover {
+  transform: rotate(5deg) scale(1.1);
+}
+
 .header-content h1 {
-  font-size: 1.6rem;
+  font-size: 1.8rem;
+  line-height: 1.2;
 }
 
 .header-content p {
@@ -519,6 +538,45 @@ a:hover {
   box-shadow: 0 18px 45px rgba(15, 23, 42, 0.9), 0 0 40px rgba(59, 130, 246, 0.3), inset 0 0 30px rgba(59, 130, 246, 0.08);
   border: 2px solid rgba(59, 130, 246, 0.6);
   animation: modalGlow 2.5s ease-in-out infinite;
+  text-align: center;
+}
+
+/* Modal Stats Badge */
+.modal-stats-badge {
+  position: absolute;
+  top: 1rem;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  font-size: 0.8rem;
+  font-weight: bold;
+  pointer-events: none;
+}
+
+.stat-badge-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: 2rem;
+  background: rgba(30, 41, 59, 0.6);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+.badge-label {
+  color: #94a3b8;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+}
+
+.badge-value {
+  color: #60a5fa;
+}
+
+#modal-fericire-text {
+  color: #4ade80;
 }
 
 @keyframes modalGlow {
@@ -529,6 +587,13 @@ a:hover {
 .modal-content h3,
 .modal-content h2 {
   margin-bottom: 0.5rem;
+}
+
+.modal-content h3 {
+  font-size: 1.5rem;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  color: #60a5fa;
 }
 
 .modal-content p {
@@ -877,6 +942,137 @@ a:hover {
 
   .user-welcome span {
     font-size: 0.75rem;
+  }
+}
+
+/* ---------------------------------------------------------
+   RESPONSIVE DESIGN (Tablete, Laptopuri mici, Telefoane)
+--------------------------------------------------------- */
+
+@media (max-width: 1024px) {
+  .container {
+    max-width: 95%;
+    padding: 1rem;
+  }
+
+  .main-layout, .game-layout {
+    grid-template-columns: 1fr; /* Stack columns on tablets */
+    gap: 1rem;
+  }
+
+  .header-content h1 {
+    font-size: 1.5rem;
+  }
+
+  .nav-logo {
+    width: 70px;
+    height: 70px;
+  }
+}
+
+@media (max-width: 768px) {
+  .site-header {
+    padding: 0.75rem 0;
+  }
+
+  .header-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+
+  .header-brand a {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .header-content h1 {
+    font-size: 1.3rem;
+  }
+
+  .auth-container {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .scenario-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .modal-content {
+    padding: 1.5rem;
+    width: 95%;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+
+  .modal-stats-badge {
+    position: static;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .modal-content h3 {
+    margin-top: 0.5rem;
+    font-size: 1.3rem;
+  }
+
+  .modal-actions {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.75rem;
+  }
+
+  .modal-actions button {
+    width: 100%;
+    margin: 0 !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-content h1 {
+    font-size: 1.1rem;
+  }
+
+  .nav-logo {
+    width: 60px;
+    height: 60px;
+  }
+
+  .auth-btn {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+  }
+
+  .intro-card, .leaderboard-card, .game-dashboard, .history-card {
+    padding: 1rem;
+  }
+
+  .btn-primary {
+    width: 100%;
+    padding: 0.8rem;
+  }
+
+  /* Ajustări pentru splash screen pe mobil */
+  .splash-text {
+    font-size: 1.2rem;
+  }
+
+  .splash-subtext {
+    font-size: 0.85rem;
+    padding: 0 1rem;
+    text-align: center;
+  }
+
+  .splash-logo-container {
+    width: 180px;
+    height: 180px;
   }
 }
 

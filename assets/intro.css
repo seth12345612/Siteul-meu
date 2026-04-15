@@ -1,0 +1,123 @@
+/* Splash Screen Styles */
+#splash-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 50% 50%, #0f172a 0%, #020617 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.8s ease-out, visibility 0.8s;
+}
+
+#splash-screen.fade-out {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.splash-logo-container {
+    width: 250px;
+    height: 250px;
+    position: relative;
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.splash-logo-svg {
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 0 20px rgba(96, 165, 250, 0.3));
+    animation: logo-float 4s ease-in-out infinite;
+}
+
+/* Individual Path Animations */
+.logo-path {
+    opacity: 0;
+    animation: path-assemble 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes path-assemble {
+    0% {
+        opacity: 0;
+        transform: translate(var(--x, 0), var(--y, 0)) scale(0.5);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(0, 0) scale(1);
+    }
+}
+
+/* Define unique start positions for each part */
+.p1 { --x: -150px; --y: -150px; animation-delay: 0.1s; }
+.p2 { --x: 150px; --y: -150px; animation-delay: 0.2s; }
+.p3 { --x: 0px; --y: -200px; animation-delay: 0.3s; }
+.p4 { --x: -200px; --y: 0px; animation-delay: 0.4s; }
+.p5 { --x: 200px; --y: 0px; animation-delay: 0.5s; }
+.p6 { --x: -150px; --y: 150px; animation-delay: 0.6s; }
+.p7 { --x: 150px; --y: 150px; animation-delay: 0.7s; }
+.p8 { --x: 0px; --y: 200px; animation-delay: 0.8s; }
+.p9 { --x: -100px; --y: -100px; animation-delay: 0.15s; }
+.p10 { --x: 100px; --y: -100px; animation-delay: 0.25s; }
+.p11 { --x: -180px; --y: 50px; animation-delay: 0.35s; }
+.p12 { --x: 180px; --y: -50px; animation-delay: 0.45s; }
+.p13 { --x: -50px; --y: -180px; animation-delay: 0.55s; }
+.p14 { --x: 50px; --y: 180px; animation-delay: 0.65s; }
+.p15 { --x: -120px; --y: -120px; animation-delay: 0.75s; }
+.p16 { --x: 120px; --y: 120px; animation-delay: 0.85s; }
+.p17 { --x: -200px; --y: -50px; animation-delay: 0.2s; }
+.p18 { --x: 200px; --y: 50px; animation-delay: 0.3s; }
+.p19 { --x: -50px; --y: 200px; animation-delay: 0.4s; }
+.p20 { --x: 50px; --y: -200px; animation-delay: 0.5s; }
+.p21 { --x: -150px; --y: 0px; animation-delay: 0.6s; }
+.p22 { --x: 150px; --y: 0px; animation-delay: 0.7s; }
+.p23 { --x: 0px; --y: -150px; animation-delay: 0.8s; }
+.p24 { --x: 0px; --y: 150px; animation-delay: 0.9s; }
+.p25 { --x: -80px; --y: -80px; animation-delay: 1s; }
+
+.splash-text {
+    color: #f9fafb;
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: text-entrance 1s ease-out 1.2s forwards;
+    text-shadow: 0 0 15px rgba(96, 165, 250, 0.4);
+}
+
+.splash-subtext {
+    color: #94a3b8;
+    font-size: 1rem;
+    margin-top: 0.5rem;
+    opacity: 0;
+    animation: text-entrance 1s ease-out 1.5s forwards;
+}
+
+@keyframes text-entrance {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes logo-float {
+    0%, 100% {
+        transform: translateY(0);
+        filter: drop-shadow(0 0 20px rgba(96, 165, 250, 0.3));
+    }
+    50% {
+        transform: translateY(-10px);
+        filter: drop-shadow(0 0 35px rgba(96, 165, 250, 0.6));
+    }
+}

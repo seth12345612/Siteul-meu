@@ -119,6 +119,8 @@ const eventTitle = document.getElementById("event-title");
 const eventDescription = document.getElementById("event-description");
 const eventEffects = document.getElementById("event-effects");
 const eventOptionsContainer = document.getElementById("event-options");
+const elModalBani = document.getElementById("modal-bani-text");
+const elModalFericire = document.getElementById("modal-fericire-text");
 
 // Verifică dacă containerul de opțiuni există
 if (!eventOptionsContainer) {
@@ -295,6 +297,10 @@ function afiseazaEveniment(eveniment) {
   evenimentCurent = eveniment;
   eventTitle.textContent = eveniment.titlu;
   eventDescription.textContent = eveniment.descriere;
+
+  // Actualizează valorile din badge-ul modalului
+  if (elModalBani) elModalBani.textContent = `${baniCurenti.toFixed(0)} RON`;
+  if (elModalFericire) elModalFericire.textContent = `${Math.round(fericireCurenta)}%`;
 
   eventEffects.innerHTML = "";
   eveniment.optiuni.forEach((opt) => {

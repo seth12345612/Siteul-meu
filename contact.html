@@ -16,8 +16,11 @@
   <!-- Header cu Navigație și Titlu pe aceeași linie -->
   <header class="site-header">
     <div class="container header-content header-inline">
-      <div class="header-left">
-        <a href="index.html" class="nav-logo">Joc Educație Financiară</a>
+      <div class="header-left" style="display: flex; align-items: center; gap: 1rem;">
+        <a href="index.html" onclick="sessionStorage.removeItem('splashShown')" style="display: flex; align-items: center; text-decoration: none; color: inherit;">
+          <img src="generated.svg" alt="Logo" class="nav-logo">
+          <span style="font-weight: bold; font-size: 1.2rem;">Joc Educație Financiară</span>
+        </a>
         <span class="header-divider">/</span>
         <h1>Contact - Suport Jucători</h1>
       </div>

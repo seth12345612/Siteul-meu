@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ro">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -17,6 +18,7 @@
       border: 1px solid rgba(148, 163, 184, 0.1);
       box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
     }
+
     .nav-back {
       display: inline-block;
       margin-bottom: 2rem;
@@ -24,21 +26,23 @@
       text-decoration: none;
       font-weight: 500;
     }
+
     .nav-back:hover {
       text-decoration: underline;
     }
   </style>
 </head>
+
 <body>
   <div class="floating-orb orb-1"></div>
   <div class="floating-orb orb-2"></div>
-  
+
   <div class="container">
     <div class="leaderboard-container">
       <a href="index.html" class="nav-back">&larr; Înapoi la meniu</a>
       <h1>🏆 Clasament Global</h1>
       <p style="color: #94a3b8; margin-bottom: 2rem;">Cei mai buni strategi financiari.</p>
-      
+
       <div id="leaderboard">
         <p>Se încarcă clasamentul...</p>
       </div>
@@ -98,4 +102,5 @@
     document.addEventListener('DOMContentLoaded', window.loadLeaderboard);
   </script>
 </body>
+
 </html>

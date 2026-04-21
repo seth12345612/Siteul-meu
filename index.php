@@ -982,8 +982,9 @@
     });
   </script>
 </head>
-<body>
-  <!-- Animated background orbs -->
+<body class="bg-slate-900 text-white min-h-screen">
+  <!-- Visual Elements -->
+  <div class="orb-vibrant"></div>
   <div class="floating-orb orb-1"></div>
   <div class="floating-orb orb-2"></div>
   <div class="floating-orb orb-3"></div>
@@ -1229,8 +1230,8 @@
 
   <main class="container main-layout">
     <section class="intro-card">
-      <div class="welcome-section" style="background: rgba(59, 130, 246, 0.1); padding: 1.5rem; border-radius: 0.75rem; border-left: 4px solid #3b82f6; margin-bottom: 2rem;">
-        <h2 style="margin-top: 0; color: #60a5fa;">🎓 Bun venit!</h2>
+      <div class="welcome-section" style="background: rgba(120, 40, 200, 0.1); padding: 1.5rem; border-radius: 1.25rem; border-left: 4px solid var(--primary-glow); margin-bottom: 2rem; border: 1px solid rgba(120, 40, 200, 0.2); backdrop-filter: blur(10px);">
+        <h2 style="margin-top: 0; color: var(--secondary-glow);">🎓 Bun venit!</h2>
         <p style="font-size: 1.05rem; color: #cbd5f5; margin: 0;">Învață să îți gestionezi banii și energia pe parcursul a 12 luni.</p>
       </div>
       
@@ -1241,23 +1242,23 @@
         <div class="rules-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin: 1.5rem 0; text-align: left;">
           <div class="rule-item">
             <span style="font-size: 1.5rem;">🎯</span>
-            <h4 style="color: #93c5fd; margin: 0.5rem 0;">Obiectivul</h4>
+            <h4 style="color: var(--secondary-glow); margin: 0.5rem 0;">Obiectivul</h4>
             <p style="font-size: 0.9rem; color: #cbd5f5;">Trebuie să ajungi la finalul celor 12 luni fără ca soldul tău bancar să scadă sub 0 și fără să îți epuizezi fericirea.</p>
           </div>
           <div class="rule-item">
             <span style="font-size: 1.5rem;">⚖️</span>
-            <h4 style="color: #93c5fd; margin: 0.5rem 0;">Echilibrul</h4>
+            <h4 style="color: var(--secondary-glow); margin: 0.5rem 0;">Echilibrul</h4>
             <p style="font-size: 0.9rem; color: #cbd5f5;">Fiecare alegere are consecințe. Poți câștiga bani sacrificând fericirea sau poți investi în starea ta de bine, dar cu un cost financiar.</p>
           </div>
           <div class="rule-item">
             <span style="font-size: 1.5rem;">📅</span>
-            <h4 style="color: #93c5fd; margin: 0.5rem 0;">Fluxul Lunii</h4>
+            <h4 style="color: var(--secondary-glow); margin: 0.5rem 0;">Fluxul Lunii</h4>
             <p style="font-size: 0.9rem; color: #cbd5f5;">La începutul fiecărei luni se aplică automat venitul și cheltuielile fixe (chirie, utilități), urmate de un eveniment surpriză.</p>
           </div>
         </div>
 
-        <div class="steps-box" style="background: rgba(30, 58, 138, 0.3); padding: 1rem; border-radius: 0.75rem; border-left: 4px solid #3b82f6; margin-bottom: 2rem; text-align: left;">
-          <h4 style="margin-bottom: 0.5rem;">🚀 Pașii tăi:</h4>
+        <div class="steps-box" style="background: rgba(120, 40, 200, 0.1); padding: 1.5rem; border-radius: 1.25rem; border-left: 4px solid var(--secondary-glow); margin-bottom: 2rem; text-align: left; border: 1px solid rgba(120, 40, 200, 0.2); backdrop-filter: blur(10px);">
+          <h4 style="margin-bottom: 0.5rem; color: var(--secondary-glow);">🚀 Pașii tăi:</h4>
           <ol style="font-size: 0.9rem; color: #cbd5f5; padding-left: 1.2rem;">
             <li><strong>Alege un scenariu</strong> de viață care ți se potrivește (Cămin, Chirie sau Garsonieră).</li>
             <li><strong>Selectează dificultatea</strong> pentru a ajusta provocarea financiară.</li>
@@ -1284,23 +1285,19 @@
             <h3>Student în chirie</h3>
           </div>
         </label>
-        <span id="scenario-garsoniera">
-          <label class="scenario-card">
-            <input type="radio" name="scenario" value="garsoniera" />
-            <div class="scenario-content">
-              <h3>Student într-o garsonieră</h3>
-            </div>
-          </label>
-        </span>
+        <label class="scenario-card">
+          <input type="radio" name="scenario" value="garsoniera" />
+          <div class="scenario-content">
+            <h3>Student într-o garsonieră</h3>
+          </div>
+        </label>
         
-        <span id="scenario-navetist">
-          <label class="scenario-card">
-            <input type="radio" name="scenario" value="navetist" />
-            <div class="scenario-content">
-              <h3>Student Navetist</h3>
-            </div>
-          </label>
-        </span>
+        <label class="scenario-card">
+          <input type="radio" name="scenario" value="navetist" />
+          <div class="scenario-content">
+            <h3>Student Navetist</h3>
+          </div>
+        </label>
       </form>
 
       <div class="actions" style="position: relative; z-index: 10;">
@@ -1318,7 +1315,7 @@
       </div>
 
       <div id="admin-panel" class="admin-panel hidden-form" style="margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid rgba(55, 65, 81, 0.8);">
-        <h3 style="margin: 0 0 0.5rem; font-size: 1.1rem; color: #93c5fd;">Administrare</h3>
+        <h3 style="margin: 0 0 0.5rem; font-size: 1.1rem; color: var(--secondary-glow);">Administrare</h3>
         <p class="muted small" style="margin: 0 0 0.75rem;">Ban / ștergere utilizatori și ștergere scoruri. La fiecare acțiune introduci parola contului admin sau cheia <code style="font-size:0.8em">ADMIN_SECRET</code> din <code style="font-size:0.8em">.env</code> (util pentru cont doar Google).</p>
         <p id="admin-status" class="status-message" style="display:none;"></p>
         <div id="admin-users-wrap"></div>

@@ -8,18 +8,18 @@
   <script src="assets/config.js"></script>
 </head>
 <body class="contact-page">
-  <!-- Animated background orbs -->
+  <!-- Visual Elements -->
+  <div class="orb-vibrant"></div>
   <div class="floating-orb orb-1"></div>
   <div class="floating-orb orb-2"></div>
   <div class="floating-orb orb-3"></div>
-
-  <!-- Header cu Navigație și Titlu pe aceeași linie -->
+  
   <header class="site-header">
-    <div class="container header-content header-inline">
+     <div class="container header-content header-inline">
       <div class="header-left" style="display: flex; align-items: center; gap: 1rem;">
         <a href="index.html" onclick="sessionStorage.removeItem('splashShown')" style="display: flex; align-items: center; text-decoration: none; color: inherit;">
           <img src="generated.svg" alt="Logo" class="nav-logo">
-          <span style="font-weight: bold; font-size: 1.2rem;">Joc Educație Financiară</span>
+          <span style="font-weight: bold; font-size: 1.2rem;">C.O.S.T. – College Operating & Survival Tactics.</span>
         </a>
         <span class="header-divider">/</span>
         <h1>Contact - Suport Jucători</h1>
@@ -34,8 +34,8 @@
   <!-- Pagina de contact -->
   <main class="container main-layout">
     <section class="intro-card">
-      <div class="welcome-section" style="background: rgba(59, 130, 246, 0.1); padding: 1.5rem; border-radius: 0.75rem; border-left: 4px solid #3b82f6; margin-bottom: 2rem;">
-        <h2 style="margin-top: 0; color: #60a5fa;">✉️ Contactează-ne</h2>
+      <div class="welcome-section" style="background: rgba(120, 40, 200, 0.1); padding: 1.5rem; border-radius: 1.25rem; border-left: 4px solid var(--primary-glow); margin-bottom: 2rem; border: 1px solid rgba(120, 40, 200, 0.2); backdrop-filter: blur(10px);">
+        <h2 style="margin-top: 0; color: var(--secondary-glow);">✉️ Contactează-ne</h2>
         <p style="font-size: 1.05rem; color: #cbd5f5; margin: 0;">Ai o întrebare sau sugestie? Trimite-ne un mesaj și vom răspunde cât mai curând.</p>
       </div>
       
@@ -66,9 +66,9 @@
       <p>Ne străduim să răspundem tuturor mesajelor în cel mai scurt timp posibil.</p>
       
       <div style="margin-top: 1.5rem;">
-          <h4 style="color: #93c5fd; margin-bottom: 0.5rem;">Alte metode de contact</h4>
+          <h4 style="color: var(--secondary-glow); margin-bottom: 0.5rem;">Alte metode de contact</h4>
           <ul style="list-style: none; color: #cbd5f5; font-size: 0.95rem; line-height: 1.6;">
-              <li>📧 <strong>Email:</strong> <a id="linkContactEmail" href="#" style="color: #60a5fa;"></a></li>
+              <li>📧 <strong>Email:</strong> <a id="linkContactEmail" href="#" style="color: var(--secondary-glow);"></a></li>
           </ul>
       </div>
 
@@ -80,7 +80,7 @@
 
   <footer class="site-footer">
     <div class="container">
-      <small>&copy; 2026 Joc Financiar Educațional </small>
+      <small>&copy; 2026 Joc Financiar Educațional | <a href="contact.html" class="link-secondary">Contactează-ne</a></small>
     </div>
   </footer>
 

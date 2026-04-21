@@ -25,24 +25,25 @@
     }
 
     .auth-btn {
-      background: rgba(30, 58, 138, 0.8);
-      color: #93c5fd;
-      border: 1px solid #3b82f6;
+      background: rgba(120, 40, 200, 0.1);
+      color: #ffffff;
+      border: 1px solid rgba(120, 40, 200, 0.4);
       padding: 0.5rem 1rem;
-      border-radius: 0.5rem;
+      border-radius: 999px;
       cursor: pointer;
       text-decoration: none;
       font-size: 0.9rem;
-      transition: all 0.2s;
+      transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
     }
 
     .auth-btn:hover {
-      background: rgba(30, 58, 138, 1);
-      color: white;
+      background: rgba(120, 40, 200, 0.2);
+      border-color: var(--secondary-glow);
+      transform: translateY(-2px);
     }
 
     .user-welcome {
-      color: #93c5fd;
+      color: var(--secondary-glow);
       font-weight: bold;
       display: flex;
       align-items: center;
@@ -52,6 +53,9 @@
     /* Modal Auth */
     #auth-modal .modal-content {
       max-width: 400px;
+      background: rgba(15, 10, 30, 0.95);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(120, 40, 200, 0.3);
     }
 
     .auth-form {
@@ -68,16 +72,23 @@
 
     .auth-form input {
       padding: 0.8rem;
-      border-radius: 0.5rem;
-      border: 1px solid #475569;
-      background: #1e293b;
+      border-radius: 0.75rem;
+      border: 1px solid rgba(120, 40, 200, 0.2);
+      background: rgba(255, 255, 255, 0.05);
       color: white;
+      transition: all 0.3s ease;
+    }
+
+    .auth-form input:focus {
+      outline: none;
+      border-color: var(--secondary-glow);
+      background: rgba(255, 255, 255, 0.1);
     }
 
     .auth-tabs {
       display: flex;
       margin-bottom: 1rem;
-      border-bottom: 1px solid #475569;
+      border-bottom: 1px solid rgba(120, 40, 200, 0.2);
     }
 
     .auth-tab {
@@ -85,12 +96,13 @@
       padding: 0.8rem;
       text-align: center;
       cursor: pointer;
-      color: #94a3b8;
+      color: var(--text-muted);
+      transition: all 0.3s ease;
     }
 
     .auth-tab.active {
-      color: #60a5fa;
-      border-bottom: 2px solid #60a5fa;
+      color: var(--secondary-glow);
+      border-bottom: 2px solid var(--secondary-glow);
       font-weight: bold;
     }
 
@@ -119,7 +131,7 @@
       gap: 1rem;
       margin: 1rem 0;
       font-size: 0.85rem;
-      color: #94a3b8;
+      color: var(--text-muted);
     }
 
     .google-divider::before,
@@ -127,7 +139,7 @@
       content: '';
       flex: 1;
       height: 1px;
-      background: #475569;
+      background: rgba(120, 40, 200, 0.2);
     }
 
     .google-btn-container {
@@ -146,19 +158,19 @@
       gap: 0.8rem;
       width: 100%;
       padding: 0.8rem;
-      background: rgba(66, 133, 244, 0.15);
-      color: #60a5fa;
-      border: 1px solid #60a5fa;
-      border-radius: 0.5rem;
+      background: rgba(255, 255, 255, 0.05);
+      color: #ffffff;
+      border: 1px solid rgba(120, 40, 200, 0.3);
+      border-radius: 0.75rem;
       cursor: pointer;
       font-size: 0.95rem;
-      transition: all 0.2s;
+      transition: all 0.3s ease;
       font-weight: 500;
     }
 
     .custom-google-btn:hover {
-      background: rgba(66, 133, 244, 0.25);
-      color: #93c5fd;
+      background: rgba(120, 40, 200, 0.1);
+      border-color: var(--secondary-glow);
     }
 
     .google-icon {
@@ -201,13 +213,13 @@
       border-radius: 0.35rem;
       cursor: pointer;
       background: transparent;
-      border: 1px solid #64748b;
+      border: 1px solid rgba(120, 40, 200, 0.3);
       color: #cbd5f5;
     }
 
     .admin-panel .btn-admin:hover {
-      border-color: #93c5fd;
-      color: #93c5fd;
+      border-color: var(--secondary-glow);
+      color: var(--secondary-glow);
     }
 
     .admin-panel .btn-admin-warn {
@@ -304,7 +316,7 @@
             <li><strong>Bani de start:</strong> +30% (începi cu mai mulți)</li>
             <li><strong>Impactul deciziilor:</strong> Deciziile greșite te costă mai puțin</li>
           </ul>
-          <strong style="display: block; margin-top: 1rem; color: #93c5fd;">🎯 Ideal pentru:</strong> Debutanți, testarea mecanicilor, relaxare.
+          <strong style="display: block; margin-top: 1rem; color: var(--secondary-glow);">🎯 Ideal pentru:</strong> Debutanți, testarea mecanicilor, relaxare.
         `
       },
       mediu: {
@@ -317,7 +329,7 @@
             <li><strong>Bani de start:</strong> Normali</li>
             <li><strong>Impactul deciziilor:</strong> Echilibrat - consecințele sunt reale</li>
           </ul>
-          <strong style="display: block; margin-top: 1rem; color: #93c5fd;">🎯 Ideal pentru:</strong> Experiența standard, jucători moderat experimentați.
+          <strong style="display: block; margin-top: 1rem; color: var(--secondary-glow);">🎯 Ideal pentru:</strong> Experiența standard, jucători moderat experimentați.
         `
       },
       greu: {
@@ -330,7 +342,7 @@
             <li><strong>Bani de start:</strong> -30% (începi cu mai puțini)</li>
             <li><strong>Impactul deciziilor:</strong> Greșelile te costă mult - prudență necesară!</li>
           </ul>
-          <strong style="display: block; margin-top: 1rem; color: #93c5fd;">🎯 Ideal pentru:</strong> Jucători veterani, cine vrea o provocare reală.
+          <strong style="display: block; margin-top: 1rem; color: var(--secondary-glow);">🎯 Ideal pentru:</strong> Jucători veterani, cine vrea o provocare reală.
         `
       }
     };
@@ -998,6 +1010,12 @@
 </head>
 
 <body class="bg-slate-900 text-white min-h-screen">
+  <!-- Visual Elements -->
+  <div class="orb-vibrant"></div>
+  <div class="floating-orb orb-1"></div>
+  <div class="floating-orb orb-2"></div>
+  <div class="floating-orb orb-3"></div>
+
   <!-- Animated Intro -->
   <div id="splash-screen">
     <div class="splash-logo-container">
@@ -1164,11 +1182,11 @@
       <div class="difficulty-grid"
         style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 1.5rem;">
         <div class="difficulty-card selectable" onclick="selectDifficulty('usor')"
-          style="cursor: pointer; background: rgba(30, 41, 59, 0.7); padding: 1.5rem; border-radius: 1rem; border: 1px solid rgba(59, 130, 246, 0.3); transition: all 0.2s ease; position: relative; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);">
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; border-bottom: 1px solid rgba(148, 163, 184, 0.1); padding-bottom: 0.75rem;">
-            <h3 style="color: #93c5fd; margin: 0; font-size: 1.3rem;">Ușor</h3>
+          style="cursor: pointer; background: rgba(255, 255, 255, 0.03); padding: 1.5rem; border-radius: 1.25rem; border: 1px solid rgba(120, 40, 200, 0.2); transition: all 0.3s ease; position: relative; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; border-bottom: 1px solid rgba(120, 40, 200, 0.1); padding-bottom: 0.75rem;">
+            <h3 style="color: var(--secondary-glow); margin: 0; font-size: 1.3rem;">Ușor</h3>
             <button onclick="event.stopPropagation(); showDifficultyInfo('usor')"
-              style="background: rgba(59, 130, 246, 0.8); color: white; border: none; border-radius: 50%; width: 28px; height: 28px; cursor: pointer; font-weight: bold; padding: 0; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 4px rgba(0,0,0,0.2); transition: background 0.2s;">?</button>
+              style="background: rgba(120, 40, 200, 0.6); color: white; border: none; border-radius: 50%; width: 28px; height: 28px; cursor: pointer; font-weight: bold; padding: 0; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 4px rgba(0,0,0,0.2); transition: background 0.2s;">?</button>
           </div>
           <ul style="list-style: none; padding: 0; margin: 0; font-size: 1rem; color: #cbd5f5; display: flex; flex-direction: column; gap: 0.6rem;">
             <li id="diff-usor-bani" style="display: flex; align-items: center;">💰 Venituri +30%</li>
@@ -1177,11 +1195,11 @@
         </div>
 
         <div class="difficulty-card selectable" onclick="selectDifficulty('mediu')"
-          style="cursor: pointer; background: rgba(30, 41, 59, 0.7); padding: 1.5rem; border-radius: 1rem; border: 1px solid rgba(59, 130, 246, 0.3); transition: all 0.2s ease; position: relative; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);">
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; border-bottom: 1px solid rgba(148, 163, 184, 0.1); padding-bottom: 0.75rem;">
-            <h3 style="color: #93c5fd; margin: 0; font-size: 1.3rem;">Mediu</h3>
+          style="cursor: pointer; background: rgba(255, 255, 255, 0.03); padding: 1.5rem; border-radius: 1.25rem; border: 1px solid rgba(120, 40, 200, 0.2); transition: all 0.3s ease; position: relative; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; border-bottom: 1px solid rgba(120, 40, 200, 0.1); padding-bottom: 0.75rem;">
+            <h3 style="color: var(--secondary-glow); margin: 0; font-size: 1.3rem;">Mediu</h3>
             <button onclick="event.stopPropagation(); showDifficultyInfo('mediu')"
-              style="background: rgba(59, 130, 246, 0.8); color: white; border: none; border-radius: 50%; width: 28px; height: 28px; cursor: pointer; font-weight: bold; padding: 0; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 4px rgba(0,0,0,0.2); transition: background 0.2s;">?</button>
+              style="background: rgba(120, 40, 200, 0.6); color: white; border: none; border-radius: 50%; width: 28px; height: 28px; cursor: pointer; font-weight: bold; padding: 0; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 4px rgba(0,0,0,0.2); transition: background 0.2s;">?</button>
           </div>
           <ul style="list-style: none; padding: 0; margin: 0; font-size: 1rem; color: #cbd5f5; display: flex; flex-direction: column; gap: 0.6rem;">
             <li id="diff-mediu-bani" style="display: flex; align-items: center;">⚖️ Venituri normale</li>
@@ -1190,11 +1208,11 @@
         </div>
 
         <div class="difficulty-card selectable" onclick="selectDifficulty('greu')"
-          style="cursor: pointer; background: rgba(30, 41, 59, 0.7); padding: 1.5rem; border-radius: 1rem; border: 1px solid rgba(59, 130, 246, 0.3); transition: all 0.2s ease; position: relative; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);">
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; border-bottom: 1px solid rgba(148, 163, 184, 0.1); padding-bottom: 0.75rem;">
-            <h3 style="color: #93c5fd; margin: 0; font-size: 1.3rem;">Greu</h3>
+          style="cursor: pointer; background: rgba(255, 255, 255, 0.03); padding: 1.5rem; border-radius: 1.25rem; border: 1px solid rgba(120, 40, 200, 0.2); transition: all 0.3s ease; position: relative; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; border-bottom: 1px solid rgba(120, 40, 200, 0.1); padding-bottom: 0.75rem;">
+            <h3 style="color: var(--secondary-glow); margin: 0; font-size: 1.3rem;">Greu</h3>
             <button onclick="event.stopPropagation(); showDifficultyInfo('greu')"
-              style="background: rgba(59, 130, 246, 0.8); color: white; border: none; border-radius: 50%; width: 28px; height: 28px; cursor: pointer; font-weight: bold; padding: 0; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 4px rgba(0,0,0,0.2); transition: background 0.2s;">?</button>
+              style="background: rgba(120, 40, 200, 0.6); color: white; border: none; border-radius: 50%; width: 28px; height: 28px; cursor: pointer; font-weight: bold; padding: 0; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 4px rgba(0,0,0,0.2); transition: background 0.2s;">?</button>
           </div>
           <ul style="list-style: none; padding: 0; margin: 0; font-size: 1rem; color: #cbd5f5; display: flex; flex-direction: column; gap: 0.6rem;">
             <li id="diff-greu-bani" style="display: flex; align-items: center;">📉 Venituri -30%</li>
@@ -1233,7 +1251,7 @@
       </p>
       <form id="admin-auth-form" onsubmit="submitAdminAuth(event)">
         <input type="password" id="admin-auth-input" placeholder="Parola admin sau cheia ADMIN_SECRET" required
-          style="width:100%; padding: 0.8rem; border-radius: 0.5rem; border: 1px solid #475569; background: #1e293b; color: white;" />
+          style="width:100%; padding: 0.8rem; border-radius: 0.75rem; border: 1px solid rgba(120, 40, 200, 0.2); background: rgba(255, 255, 255, 0.05); color: white;" />
         <div id="admin-auth-error" class="auth-message" style="display:none;"></div>
         <div class="modal-actions" style="margin-top: 0.75rem;">
           <button type="button" onclick="closeAdminAuthModal()" class="btn-secondary">Anulează</button>
@@ -1269,16 +1287,15 @@
 
   <main class="container main-layout">
     <section class="intro-card">
-      <div class="welcome-section"
-        style="background: rgba(59, 130, 246, 0.1); padding: 1.5rem; border-radius: 0.75rem; border-left: 4px solid #3b82f6; margin-bottom: 2rem;">
-        <h2 style="margin-top: 0; color: #60a5fa;">🎓 Bun venit!</h2>
+      <div class="welcome-section theme-accent-box" style="padding: 1.5rem; border-radius: 0.75rem; margin-bottom: 2rem;">
+        <h2 style="margin-top: 0; color: var(--secondary-glow);">🎓 Bun venit!</h2>
         <p style="font-size: 1.05rem; color: #cbd5f5; margin: 0;">Învață să îți gestionezi banii și energia pe parcursul
           a 12 luni.</p>
       </div>
 
-      <div class="how-to-play"
-        style="background: rgba(30, 41, 59, 0.7); padding: 2rem; border-radius: 1rem; box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.8), 0 10px 15px -5px rgba(0, 0, 0, 0.5); border: 1px solid rgba(59, 130, 246, 0.3); margin-bottom: 2rem; backdrop-filter: blur(4px);">
-        <h2 style="text-shadow: 0 2px 4px rgba(0,0,0,0.6);">📖 Cum se joacă?</h2>
+      <div class="how-to-play theme-card-vibrant"
+        style="padding: 2rem; border-radius: 1rem; margin-bottom: 2rem; backdrop-filter: blur(4px);">
+        <h2 style="text-shadow: 0 2px 4px rgba(0,0,0,0.6); color: var(--primary-glow);">📖 Cum se joacă?</h2>
         <p style="text-shadow: 0 1px 3px rgba(0,0,0,0.8); font-size: 1.05rem;">Acesta este un simulator de educație
           financiară conceput să te învețe cum să gestionezi resursele limitate pe parcursul a <strong>12 luni</strong>
           de studenție.</p>
@@ -1286,28 +1303,28 @@
         <div class="rules-grid"
           style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin: 1.5rem 0; text-align: left;">
           <div class="rule-item">
-            <span style="font-size: 1.5rem;">🎯</span>
-            <h4 style="color: #93c5fd; margin: 0.5rem 0;">Obiectivul</h4>
+            <span class="theme-icon-glow" style="font-size: 1.5rem;">🎯</span>
+            <h4 style="color: var(--secondary-glow); margin: 0.5rem 0;">Obiectivul</h4>
             <p style="font-size: 0.9rem; color: #cbd5f5;">Trebuie să ajungi la finalul celor 12 luni fără ca soldul tău
               bancar să scadă sub 0 și fără să îți epuizezi fericirea.</p>
           </div>
           <div class="rule-item">
-            <span style="font-size: 1.5rem;">⚖️</span>
-            <h4 style="color: #93c5fd; margin: 0.5rem 0;">Echilibrul</h4>
+            <span class="theme-icon-glow" style="font-size: 1.5rem;">⚖️</span>
+            <h4 style="color: var(--secondary-glow); margin: 0.5rem 0;">Echilibrul</h4>
             <p style="font-size: 0.9rem; color: #cbd5f5;">Fiecare alegere are consecințe. Poți câștiga bani sacrificând
               fericirea sau poți investi în starea ta de bine, dar cu un cost financiar.</p>
           </div>
           <div class="rule-item">
-            <span style="font-size: 1.5rem;">📅</span>
-            <h4 style="color: #93c5fd; margin: 0.5rem 0;">Fluxul Lunii</h4>
+            <span class="theme-icon-glow" style="font-size: 1.5rem;">📅</span>
+            <h4 style="color: var(--secondary-glow); margin: 0.5rem 0;">Fluxul Lunii</h4>
             <p style="font-size: 0.9rem; color: #cbd5f5;">La începutul fiecărei luni se aplică automat venitul și
               cheltuielile fixe (chirie, utilități), urmate de un eveniment surpriză.</p>
           </div>
         </div>
 
-        <div class="steps-box"
-          style="background: rgba(30, 58, 138, 0.3); padding: 1rem; border-radius: 0.75rem; border-left: 4px solid #3b82f6; margin-bottom: 2rem; text-align: left;">
-          <h4 style="margin-bottom: 0.5rem;">🚀 Pașii tăi:</h4>
+        <div class="steps-box theme-accent-box"
+          style="padding: 1rem; border-radius: 0.75rem; margin-bottom: 2rem; text-align: left;">
+          <h4 style="margin-bottom: 0.5rem; color: var(--secondary-glow);">🚀 Pașii tăi:</h4>
           <ol style="font-size: 0.9rem; color: #cbd5f5; padding-left: 1.2rem;">
             <li><strong>Alege un scenariu</strong> de viață care ți se potrivește (Cămin, Chirie sau Garsonieră).</li>
             <li><strong>Selectează dificultatea</strong> pentru a ajusta provocarea financiară.</li>
@@ -1317,7 +1334,7 @@
         </div>
       </div>
 
-      <h2>Alege scenariul</h2>
+      <h2 style="color: var(--primary-glow);">Alege scenariul</h2>
       <p>Selectează un profil și începe simularea. Obiectivul tău este să supraviețuiești 12 luni fără să intri pe minus
         și fără să îți epuizezi fericirea.</p>
 
@@ -1325,34 +1342,22 @@
         <input type="hidden" name="difficulty" id="hidden-difficulty" value="mediu" />
         <label class="scenario-card">
           <input type="radio" name="scenario" value="camin" checked />
-          <div class="scenario-content">
-            <h3>Student la cămin</h3>
-          </div>
+            <h4>Student la cămin</h4>
         </label>
 
         <label class="scenario-card">
           <input type="radio" name="scenario" value="chirie" />
-          <div class="scenario-content">
-            <h3>Student în chirie</h3>
-          </div>
+            <h4>Student în chirie</h4>
         </label>
-        <span id="scenario-garsoniera">
-          <label class="scenario-card">
-            <input type="radio" name="scenario" value="garsoniera" />
-            <div class="scenario-content">
-              <h3>Student într-o garsonieră</h3>
-            </div>
-          </label>
-        </span>
+        <label class="scenario-card">
+          <input type="radio" name="scenario" value="garsoniera" />
+            <h4>Student într-o garsonieră</h4>
+        </label>
 
-        <span id="scenario-navetist">
-          <label class="scenario-card">
-            <input type="radio" name="scenario" value="navetist" />
-            <div class="scenario-content">
-              <h3>Student Navetist</h3>
-            </div>
-          </label>
-        </span>
+        <label class="scenario-card">
+          <input type="radio" name="scenario" value="navetist" />
+            <h4>Student Navetist</h4>
+        </label>
       </form>
 
       <div class="actions" style="position: relative; z-index: 10;">
@@ -1371,7 +1376,7 @@
 
       <div id="admin-panel" class="admin-panel hidden-form"
         style="margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid rgba(55, 65, 81, 0.8);">
-        <h3 style="margin: 0 0 0.5rem; font-size: 1.1rem; color: #93c5fd;">Administrare</h3>
+        <h3 style="margin: 0 0 0.5rem; font-size: 1.1rem; color: var(--secondary-glow);">Administrare</h3>
         <p class="muted small" style="margin: 0 0 0.75rem;">Ban / ștergere utilizatori și ștergere scoruri. La fiecare
           acțiune introduci parola contului admin sau cheia <code style="font-size:0.8em">ADMIN_SECRET</code> din <code
             style="font-size:0.8em">.env</code> (util pentru cont doar Google).</p>

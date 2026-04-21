@@ -11,31 +11,37 @@
     .leaderboard-container {
       max-width: 800px;
       margin: 4rem auto;
-      padding: 2rem;
-      background: rgba(30, 41, 59, 0.7);
-      backdrop-filter: blur(12px);
-      border-radius: 1rem;
-      border: 1px solid rgba(148, 163, 184, 0.1);
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+      padding: 2.5rem;
+      background: var(--card-bg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-radius: 1.5rem;
+      border: 1px solid rgba(120, 40, 200, 0.2);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
     }
 
     .nav-back {
       display: inline-block;
       margin-bottom: 2rem;
-      color: #93c5fd;
+      color: var(--secondary-glow);
       text-decoration: none;
       font-weight: 500;
+      transition: all 0.3s ease;
     }
 
     .nav-back:hover {
-      text-decoration: underline;
+      transform: translateX(-5px);
+      text-shadow: 0 0 10px rgba(255, 120, 40, 0.4);
     }
   </style>
 </head>
 
 <body>
+  <!-- Visual Elements -->
+  <div class="orb-vibrant"></div>
   <div class="floating-orb orb-1"></div>
   <div class="floating-orb orb-2"></div>
+  <div class="floating-orb orb-3"></div>
 
   <div class="container">
     <div class="leaderboard-container">

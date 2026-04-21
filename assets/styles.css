@@ -247,9 +247,12 @@ a:hover {
 }
 
 .scenario-card {
-  position: relative;
+  padding: 20px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
   cursor: pointer;
-  
+  transition: all 0.3s ease;
+  display: block;
 }
 
 .scenario-card input[type="radio"] {
@@ -258,6 +261,35 @@ a:hover {
   pointer-events: none;
 }
 
+/* Glow când este selectat */
+.scenario-card:has(input[type="radio"]:checked) {
+  border-color: #7804ec;
+  box-shadow: 0 0 20px rgba(120, 40, 200, 0.6),
+              0 0 40px rgba(120, 40, 200, 0.3);
+  background-color: rgba(120, 40, 200, 0.05);
+}
+
+/* Efect hover optional */
+.scenario-card:hover {
+  border-color: #93c5fd;
+  transform: translateY(-2px);
+}
+
+/* Stilul normal pentru scenarii */
+.scenariu {
+  padding: 20px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Glow-ul când este selectat */
+.scenariu.active {
+  border-color: #3b82f6;
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.6),
+              0 0 40px rgba(59, 130, 246, 0.3);
+}
 
 /* Scenarii tematice */
 .scenario-card:nth-of-type(1) .scenario-content {

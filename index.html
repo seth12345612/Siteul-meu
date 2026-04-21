@@ -1338,23 +1338,38 @@
       <p>Selectează un profil și începe simularea. Obiectivul tău este să supraviețuiești 12 luni fără să intri pe minus
         și fără să îți epuizezi fericirea.</p>
 
+<script>
+  // JavaScript pentru a adăuga/scoate glow-ul
+const scenarii = document.querySelectorAll('.scenariu');
+
+scenarii.forEach(scenariu => {
+  scenariu.addEventListener('click', function() {
+    // Scoate active de pe toate scenariile
+    scenarii.forEach(s => s.classList.remove('active'));
+    
+    // Adaugă active pe cel apăsat
+    this.classList.add('active');
+  });
+});
+</script>
+
       <form id="scenario-form" action="game.html" method="GET" class="scenario-grid">
         <input type="hidden" name="difficulty" id="hidden-difficulty" value="mediu" />
-        <label class="scenario-card">
+        <label class="scenario-card scenariu ">
           <input type="radio" name="scenario" value="camin" checked />
             <h4>Student la cămin</h4>
         </label>
 
-        <label class="scenario-card">
+        <label class="scenario-card scenariu">
           <input type="radio" name="scenario" value="chirie" />
             <h4>Student în chirie</h4>
         </label>
-        <label class="scenario-card">
+        <label class="scenario-card scenariu ">
           <input type="radio" name="scenario" value="garsoniera" />
             <h4>Student într-o garsonieră</h4>
         </label>
 
-        <label class="scenario-card">
+        <label class="scenario-card scenariu ">
           <input type="radio" name="scenario" value="navetist" />
             <h4>Student Navetist</h4>
         </label>

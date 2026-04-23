@@ -1,7 +1,7 @@
 window.CONFIG = {
   API_URL: 'http://localhost:3000',
   /** Adresa pentru contact direct (mailto) — aceeași cu cea afișată pe pagina Contact. */
-  CONTACT_EMAIL: 'genpro066@gmail.com',
+  CONTACT_EMAIL: 'alexandruaoglagioaie@gmail.com',
   /**
    * Username admin (același ca ADMIN_USERNAME în backend/.env).
    * Cont doar Google: setează ADMIN_SECRET în .env și introduce cheia la prompt.

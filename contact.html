@@ -25,7 +25,10 @@
         <h1>Contact - Suport Jucători</h1>
       </div>
       
-      <nav class="nav-menu">
+      <nav class="nav-menu" style="display: flex; align-items: center; gap: 1rem;">
+        <div class="theme-toggle-container">
+          <button class="theme-toggle-btn" onclick="window.toggleTheme()" title="Comută Tema">☀️</button>
+        </div>
         <a href="index.html" class="nav-link">Acasă</a>
       </nav>
     </div>
@@ -36,7 +39,7 @@
     <section class="intro-card">
       <div class="welcome-section" style="background: rgba(120, 40, 200, 0.1); padding: 1.5rem; border-radius: 1.25rem; border-left: 4px solid var(--primary-glow); margin-bottom: 2rem; border: 1px solid rgba(120, 40, 200, 0.2); backdrop-filter: blur(10px);">
         <h2 style="margin-top: 0; color: var(--secondary-glow);">✉️ Contactează-ne</h2>
-        <p style="font-size: 1.05rem; color: #cbd5f5; margin: 0;">Ai o întrebare sau sugestie? Trimite-ne un mesaj și vom răspunde cât mai curând.</p>
+        <p style="font-size: 1.05rem; color: var(--text-bright); margin: 0;">Ai o întrebare sau sugestie? Trimite-ne un mesaj și vom răspunde cât mai curând.</p>
       </div>
       
       <form id="formularContact" style="display: flex; flex-direction: column; gap: 1.25rem;">
@@ -55,7 +58,7 @@
           <textarea id="mesaj" name="mesaj" placeholder="Cu ce te putem ajuta?" required rows="5"></textarea>
         </div>
 
-        <button type="submit" id="butonTrimite" class="btn-submit">🚀 Trimite mesajul</button>
+        <button type="submit" id="butonTrimite" class="btn-primary">🚀 Trimite mesajul</button>
       </form>
       
       <p id="statusMesaj" class="status-message" style="display:none;"></p>
@@ -67,12 +70,12 @@
       
       <div style="margin-top: 1.5rem;">
           <h4 style="color: var(--secondary-glow); margin-bottom: 0.5rem;">Alte metode de contact</h4>
-          <ul style="list-style: none; color: #cbd5f5; font-size: 0.95rem; line-height: 1.6;">
+          <ul style="list-style: none; color: var(--text-bright); font-size: 0.95rem; line-height: 1.6;">
               <li>📧 <strong>Email:</strong> <a id="linkContactEmail" href="#" style="color: var(--secondary-glow);"></a></li>
           </ul>
       </div>
 
-      <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(55, 65, 81, 0.8);">
+      <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--card-border);">
         <p class="muted small">Ai o problemă tehnică? Te rugăm să incluzi în mesaj detalii despre browserul folosit și pașii pentru a reproduce problema.</p>
       </div>
     </aside>
@@ -100,6 +103,7 @@
     // Selectăm formularul
     const formular = document.getElementById('formularContact');
     const statusMesaj = document.getElementById('statusMesaj');
+    const butonTrimite = document.getElementById('butonTrimite');
 
     // Ascultăm evenimentul de 'submit' (când se apasă butonul)
     formular.addEventListener('submit', async function(eveniment) {
@@ -112,6 +116,20 @@
         email: document.getElementById('email').value,
         mesaj: document.getElementById('mesaj').value
       };
+
+      // Validare de bază
+      if (!dateFormular.nume.trim() || !dateFormular.email.trim() || !dateFormular.mesaj.trim()) {
+        statusMesaj.style.display = 'block';
+        statusMesaj.className = 'status-message error';
+        statusMesaj.innerText = '⚠️ Te rugăm să completezi toate câmpurile!';
+        return;
+      }
+
+      // Dezactivăm butonul în timp ce se trimite
+      butonTrimite.disabled = true;
+      butonTrimite.style.opacity = '0.6';
+      const textOriginal = butonTrimite.innerText;
+      butonTrimite.innerText = '⏳ Se trimite...';
 
       try {
         // Trimitem datele către serverul nostru Node.js
@@ -129,14 +147,31 @@
           statusMesaj.className = 'status-message success';
           statusMesaj.innerText = '✅ Mesajul a fost trimis cu succes! Îți vom răspunde în curând.';
           formular.reset(); // Curățăm formularul
+          
+          // Reactivăm butonul
+          butonTrimite.disabled = false;
+          butonTrimite.style.opacity = '1';
+          butonTrimite.innerText = textOriginal;
         } else {
-          throw new Error('Eroare la trimitere');
+          throw new Error('Eroare la trimitere: ' + raspuns.status);
         }
       } catch (eroare) {
         statusMesaj.style.display = 'block';
         statusMesaj.className = 'status-message error';
-        statusMesaj.innerText = '❌ A apărut o eroare. Te rugăm să încerci din nou.';
-        console.error(eroare);
+        
+        // Mesaj de eroare mai detaliat
+        if (eroare.message.includes('Failed to fetch')) {
+          statusMesaj.innerText = '❌ Serverul nu este disponibil. Te rugăm să contactezi direct pe email: ' + (window.CONFIG?.CONTACT_EMAIL || 'contact@joc.ro');
+        } else {
+          statusMesaj.innerText = '❌ A apărut o eroare: ' + eroare.message;
+        }
+        
+        console.error('Eroare contact:', eroare);
+        
+        // Reactivăm butonul
+        butonTrimite.disabled = false;
+        butonTrimite.style.opacity = '1';
+        butonTrimite.innerText = textOriginal;
       }
     });
   </script>

@@ -34,3 +34,29 @@ window.gameConfig = {
   },
 };
 
+// Theme Management
+(function() {
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+
+    window.toggleTheme = function() {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        updateToggleIcons();
+    };
+
+    function updateToggleIcons() {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const btns = document.querySelectorAll('.theme-toggle-btn');
+        btns.forEach(btn => {
+            btn.innerHTML = currentTheme === 'dark' ? '☀️' : '🌙';
+            btn.title = currentTheme === 'dark' ? 'Comută la Light Mode' : 'Comută la Dark Mode';
+        });
+    }
+
+    // Initialize icons on load
+    window.addEventListener('DOMContentLoaded', updateToggleIcons);
+})();

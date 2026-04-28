@@ -1,4 +1,4 @@
-window.gameEvents = {
+﻿window.gameEvents = {
   camin: [
     {
       titlu: "Petrecere în cameră",
@@ -341,6 +341,230 @@ window.gameEvents = {
       optiuni: [
         { text: "Îi cumpăr un cadou frumos și merg", bani: -120, fericirePct: 20, lectie: "Prietenia presupune și efort financiar, dar aduce fericire." },
         { text: "Îl felicit doar prin mesaje și inventez o scuză", bani: 0, fericirePct: -15, lectie: "Colegul e dezamăgit de lipsa ta de implicare." }
+      ]
+    },
+    {
+      titlu: "Sesiune de cram pe ultima sută de metri",
+      descriere: "Examenul e mâine și nu ai studiat nimic.",
+      optiuni: [
+        { text: "Stiu trezit toată noaptea cu cafea", bani: -80, fericirePct: -30, lectie: "Nopțile albe în cămin sunt o tradițiune proastă." },
+        { text: "Dorm și sper la inspirație", bani: 0, fericirePct: -50, lectie: "Eșecul vine ca o bombă." }
+      ]
+    },
+    {
+      titlu: "Ciorba de burtă în cămin",
+      descriere: "Prietenul tău a adus ingrediente și vrea să gătească.",
+      optiuni: [
+        { text: "Particip și mânânc", bani: -50, fericirePct: 20, lectie: "Gătitul în echipă e mai ieftin și mai vesel." },
+        { text: "Cumpăr gata din comerț", bani: -30, fericirePct: -5, lectie: "Lenes dar scump." }
+      ]
+    },
+    {
+      titlu: "Ziua Mondială a Cafeii",
+      descriere: "Se festejează în cămin cu degustări.",
+      optiuni: [
+        { text: "Particip cu o donație", bani: -50, fericirePct: 15, lectie: "Coeziunea socială costă puțin." },
+        { text: "Stau departe", bani: 0, fericirePct: -5, lectie: "Izolare voluntară." }
+      ]
+    },
+    {
+      titlu: "Convorbire gresie cu colegul de cameră",
+      descriere: "Faci o conversație awkward cu colegul în timp ce se îmbrăcă.",
+      optiuni: [
+        { text: "Merg în bibliotecă", bani: -20, fericirePct: 10, lectie: "Eviti tensiunea socială." },
+        { text: "Încerc o glumă", bani: 0, fericirePct: 5, lectie: "Comunicarea directă." }
+      ]
+    },
+    {
+      titlu: "Plouă și e noroi la intrarea căminului",
+      descriere: "Toate hainele se murdăresc.",
+      optiuni: [
+        { text: "Cumpăr spray de curaț speciale", bani: -120, fericirePct: 5, lectie: "Soluția profesională." },
+        { text: "Spăl hainele mai des", bani: 0, fericirePct: -10, lectie: "Efort și consum de apă." }
+      ]
+    },
+    {
+      titlu: "Ziua de șters geamurile",
+      descriere: "Administrația a anunțat o sesiune colectivă de curățenie.",
+      optiuni: [
+        { text: "Particip cu poftă", bani: 0, fericirePct: 5, lectie: "Comunitate." },
+        { text: "Pretex că sunt bolnav", bani: 0, fericirePct: -10, lectie: "Parazitare." }
+      ]
+    },
+    {
+      titlu: "Spectacol de teatru în hol",
+      descriere: "Studenții fac o piesă de teatru amator.",
+      optiuni: [
+        { text: "Merg să-i vad", bani: 0, fericirePct: 15, lectie: "Cultura e gratuit în cămin." },
+        { text: "E prea stângaci, nu merg", bani: 0, fericirePct: -5, lectie: "Lipsă de suport." }
+      ]
+    },
+    {
+      titlu: "Mandat de control al poliției locale",
+      descriere: "Poliția vine în cămin pentru verificări.",
+      optiuni: [
+        { text: "E o procedură normală", bani: 0, fericirePct: -5, lectie: "Normalitate." },
+        { text: "Panic și ascund truditiile", bani: 0, fericirePct: -15, lectie: "Frica e exagerată." }
+      ]
+    },
+    {
+      titlu: "Locul de lăudat în campionatul de ping-pong",
+      descriere: "E un turneu între paliere.",
+      optiuni: [
+        { text: "Particip serios", bani: -50, fericirePct: 20, lectie: "Competiția e sănătoasă." },
+        { text: "Mă-nscriu și pierd repede", bani: -30, fericirePct: 10, lectie: "Participarea contează." }
+      ]
+    },
+    {
+      titlu: "Kit de reparații DIY",
+      descriere: "Vrei să-ți reperez amplificatorul audio.",
+      optiuni: [
+        { text: "Cumpăr kit de unelte", bani: -200, fericirePct: 15, lectie: "Puterea de a repara lucruri." },
+        { text: "Cer un coleg mecanician", bani: -50, fericirePct: 10, lectie: "Economia socială." }
+      ]
+    },
+    {
+      titlu: "Frunzele cad și trebuie să-mi schimb stilul",
+      descriere: "E vară și hainele groase nu-și au locul.",
+      optiuni: [
+        { text: "Cumpăr haine de vară", bani: -400, fericirePct: 10, lectie: "Sezonalitate vestimentară." },
+        { text: "Port ce am și sufăr", bani: 0, fericirePct: -15, lectie: "Disconfort." }
+      ]
+    },
+    {
+      titlu: "Competiție de cântarire.",
+      descriere: "Cineva dă cuvântul că sunt cel mai gras din cameră.",
+      optiuni: [
+        { text: "Merg la sală", bani: -200, fericirePct: 15, lectie: "Sănătatea mintală." },
+        { text: "Mănânc mai mult din nervozitate", bani: -150, fericirePct: -20, lectie: "Vicios cercul." }
+      ]
+    },
+    {
+      titlu: "Ziua universității",
+      descriere: "Se sărbătorește cu o petrecere mare și cu mâncare.",
+      optiuni: [
+        { text: "Particip la tot", bani: -100, fericirePct: 25, lectie: "Tradiție și comunitate." },
+        { text: "Evit mulțimea", bani: 0, fericirePct: -10, lectie: "Introversiunea izolează." }
+      ]
+    },
+    {
+      titlu: "Mierle și ciocăneli în geamuri",
+      descriere: "Păsări sălbatice au început să chirpe la 6 AM.",
+      optiuni: [
+        { text: "Pun pânze gaze", bani: -60, fericirePct: 10, lectie: "Soluții simple de confort." },
+        { text: "Dorm cu protecție la urechi", bani: -40, fericirePct: 0, lectie: "Compromis." }
+      ]
+    },
+    {
+      titlu: "Stațiune meteo pe geam",
+      descriere: "Colegul tău e meteorolog și vrea să instaleze o stație.",
+      optiuni: [
+        { text: "Îl ajut și aflăm vremea în timp real", bani: -30, fericirePct: 15, lectie: "Curiozitate științifică." },
+        { text: "Refuz și-i spun că e aiurea", bani: 0, fericirePct: -5, lectie: "Intolerență." }
+      ]
+    },
+    {
+      titlu: "Abonament la bibliotecă digitală",
+      descriere: "Universitatea oferă acces la cărți digitale.",
+      optiuni: [
+        { text: "Mă înmatriculez imediat", bani: 0, fericirePct: 15, lectie: "Gratis și iluminat." },
+        { text: "Prefer cărțile fizice", bani: 0, fericirePct: 0, lectie: "Purism." }
+      ]
+    },
+    {
+      titlu: "Campanie de donație de sânge",
+      descriere: "Crucea Roșie organizează în cămin.",
+      optiuni: [
+        { text: "Donez și câștig o pluie gratuit", bani: 100, fericirePct: 20, lectie: "Fapte bune cu recompense." },
+        { text: "Mi-e teama de ace", bani: 0, fericirePct: -10, lectie: "Frica limitează caritatea." }
+      ]
+    },
+    {
+      titlu: "Seminar de antreprenoriat în cămin",
+      descriere: "Se ține un seminar despre cum să-ți pornești o afacere.",
+      optiuni: [
+        { text: "Particip și mă inspir", bani: 0, fericirePct: 15, lectie: "Educație pe viață." },
+        { text: "E prea greu, prefar job normal", bani: 0, fericirePct: -5, lectie: "Lipsă de aspirații." }
+      ]
+    },
+    {
+      titlu: "Stud în gardă noaptea",
+      descriere: "Trebuie să fii stud de serviciu și să verifici ușile.",
+      optiuni: [
+        { text: "Accept responsabilitatea", bani: 50, fericirePct: -10, lectie: "Responsabilitate cu plată mică." },
+        { text: "Refuz și spun că nu pot", bani: 0, fericirePct: 0, lectie: "Evit obligații." }
+      ]
+    },
+    {
+      titlu: "Petrecere de-abiurire a studenților de anul 1",
+      descriere: "Anul 1 îți propune o petrecere.",
+      optiuni: [
+        { text: "Particip la ritual", bani: -200, fericirePct: 20, lectie: "Tradiție și legare de promoție." },
+        { text: "Refuz, sunt prea bătrân", bani: 0, fericirePct: -5, lectie: "Pretențiozitate." }
+      ]
+    },
+    {
+      titlu: "Jocuri de masă în hol",
+      descriere: "Oamenii se adună pentru jocuri de cărți și table.",
+      optiuni: [
+        { text: "Joc și câștig puțini bani", bani: 50, fericirePct: 20, lectie: "Jocul social și noroc." },
+        { text: "Joc și pierd bani", bani: -100, fericirePct: -10, lectie: "Jocurile de noroc sunt riscante." }
+      ]
+    },
+    {
+      titlu: "Curs de meditație în cămin",
+      descriere: "Se oferă sesiuni gratuite de yoga și meditație.",
+      optiuni: [
+        { text: "Particip regulat", bani: 0, fericirePct: 25, lectie: "Sănătatea mintală e prioritară." },
+        { text: "Sunt prea ocupat", bani: 0, fericirePct: -10, lectie: "Oboseala acumulată." }
+      ]
+    },
+    {
+      titlu: "Competiție de gătit între camerele din cămin",
+      descriere: "Fiecare cameră pregătește un fel de mâncare.",
+      optiuni: [
+        { text: "Gătesc o specializare a regiunii mele",bani: -150, fericirePct: 25, lectie: "Patrimoniul culinar aduce conștiință." },
+        { text: "Cumpăr mâncare semifacă", bani: -60, fericirePct: 5, lectie: "Ușuință, dar noi nu vreau." }
+      ]
+    },
+    {
+      titlu: "Ninsoare și patinoar în curtea căminului",
+      descriere: "S-a format un patinoar natural pe o baltă.",
+      optiuni: [
+        { text: "Îmi iau patine și pleci", bani: -300, fericirePct: 25, lectie: "Investiția în distracție de iarnă." },
+        { text: "Mă uit de la fereastră", bani: 0, fericirePct: 5, lectie: "Spectator." }
+      ]
+    },
+    {
+      titlu: "Proiect de înfrumusețare a culoarelor",
+      descriere: "Se propune pictura muralelor în cămin.",
+      optiuni: [
+        { text: "Particip cu vopsea și creație", bani: -80, fericirePct: 20, lectie: "Arte și estetică comunitară." },
+        { text: "Observ din depărtare", bani: 0, fericirePct: 0, lectie: "Pasivitate." }
+      ]
+    },
+    {
+      titlu: "Locuri de cărți și cărți de povești",
+      descriere: "Se face o bibliotecă comună pe palier.",
+      optiuni: [
+        { text: "Donez cărți citite", bani: 0, fericirePct: 15, lectie: "Circulația cărților economisește bani." },
+        { text: "Nu particip", bani: 0, fericirePct: 0, lectie: "Izolare intelectuală." }
+      ]
+    },
+    {
+      titlu: "Serenadă pentru ziua Sfântului Gheorghe",
+      descriere: "Gropu băieților colindă camerele fetelor.",
+      optiuni: [
+        { text: "Primesc cu brioșe și suc", bani: -100, fericirePct: 20, lectie: "Tradiție și ospitalitate." },
+        { text: "Refuz, nu-mi place obiceiul", bani: 0, fericirePct: -10, lectie: "Patriarhalism." }
+      ]
+    },
+    {
+      titlu: "Bug de securitate în accesul la cămin",
+      descriere: "Ușa de intrare e defectă și se deschide ușor.",
+      optiuni: [
+        { text: "Raportez imediat administratorului", bani: 0, fericirePct: 10, lectie: "Integritate și responsabilitate." },
+        { text: "Las ușa așa și spor la hoți", bani: 0, fericirePct: -5, lectie: "Indiferență." }
       ]
     }
   ],
@@ -1659,3 +1883,4 @@ window.gameEvents = {
     }
   ]
 };
+

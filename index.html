@@ -26,7 +26,7 @@
 
     .auth-btn {
       background: rgba(120, 40, 200, 0.1);
-      color: #ffffff;
+      color: var(--text-main);
       border: 1px solid rgba(120, 40, 200, 0.4);
       padding: 0.5rem 1rem;
       border-radius: 999px;
@@ -53,9 +53,10 @@
     /* Modal Auth */
     #auth-modal .modal-content {
       max-width: 400px;
-      background: rgba(15, 10, 30, 0.95);
+      background: var(--card-bg);
       backdrop-filter: blur(20px);
-      border: 1px solid rgba(120, 40, 200, 0.3);
+      border: 1px solid var(--card-border);
+      color: var(--text-main);
     }
 
     .auth-form {
@@ -73,9 +74,9 @@
     .auth-form input {
       padding: 0.8rem;
       border-radius: 0.75rem;
-      border: 1px solid rgba(120, 40, 200, 0.2);
-      background: rgba(255, 255, 255, 0.05);
-      color: white;
+      border: 1px solid var(--input-border);
+      background: var(--input-bg);
+      color: var(--text-main);
       transition: all 0.3s ease;
     }
 
@@ -158,9 +159,9 @@
       gap: 0.8rem;
       width: 100%;
       padding: 0.8rem;
-      background: rgba(255, 255, 255, 0.05);
-      color: #ffffff;
-      border: 1px solid rgba(120, 40, 200, 0.3);
+      background: var(--input-bg);
+      color: var(--text-main);
+      border: 1px solid var(--input-border);
       border-radius: 0.75rem;
       cursor: pointer;
       font-size: 0.95rem;
@@ -214,7 +215,7 @@
       cursor: pointer;
       background: transparent;
       border: 1px solid rgba(120, 40, 200, 0.3);
-      color: #cbd5f5;
+      color: var(--text-bright);
     }
 
     .admin-panel .btn-admin:hover {
@@ -1272,6 +1273,9 @@
       </div>
 
       <!-- Auth Container moved inside header -->
+      <div class="theme-toggle-container">
+        <button class="theme-toggle-btn" onclick="window.toggleTheme()" title="Comută Tema">☀️</button>
+      </div>
       <div class="auth-container">
         <div id="logged-in-user" class="user-welcome hidden-form">
           <span id="welcome-message"></span>

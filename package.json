@@ -15,8 +15,8 @@
     "nodemailer": "^8.0.3",
     "pg": "^8.20.0"
   },
-  "main": "backend/server.js",
+  "main": "server.js",
   "scripts": {
-    "start": "node backend/server.js"
+    "start": "node server.js"
   }
 }

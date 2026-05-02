@@ -1,4 +1,4 @@
-require('dotenv').config({ path: path.join(__dirname, 'backend', '.env') });
+require('dotenv').config();
 const crypto = require('crypto');
 const express = require('express');
 const bodyParser = require('body-parser');

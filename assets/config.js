@@ -1,5 +1,5 @@
 window.CONFIG = {
-  API_URL: 'http://localhost:3000',
+  API_URL: 'https://siteul-meu.onrender.com',
   /** Adresa pentru contact direct (mailto) — aceeași cu cea afișată pe pagina Contact. */
   CONTACT_EMAIL: 'alexandruaoglagioaie@gmail.com',
   /**

@@ -724,8 +724,10 @@ app.post('/trimite-email', async (req, res) => {
     // Verificare configurare ÎNAINTE de a crea transportor
     if (!process.env.EMAIL_USER || !process.env.EMAIL_PASSWORD) {
       console.error('❌ Email configuration MISSING! Set EMAIL_USER and EMAIL_PASSWORD in .env file');
-      return res.status(500).json({ success: false, mesaj: 'Serviciul de email nu este configurat. Contactează administratorul.' });
+      return res.status(500).json({ success: false, mesaj: 'Serviciul de email nu este configurat pe server. Contactează administratorul.' });
     }
+
+    console.log('EMAIL_USER set:', process.env.EMAIL_USER ? 'DA' : 'NU');
 
     // Configurare Nodemailer
     const transportor = nodemailer.createTransport({

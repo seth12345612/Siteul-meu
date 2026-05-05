@@ -714,6 +714,8 @@ app.post('/google-register', async (req, res) => {
 // Email Endpoint - Trimite email prin nodemailer
 app.post('/trimite-email', async (req, res) => {
   const { nume, email, mesaj } = req.body;
+  const emailUser = (process.env.EMAIL_USER || '').trim();
+  const emailPassword = (process.env.EMAIL_PASSWORD || '').trim();
 
   // Validare date
   if (!nume || !email || !mesaj) {
@@ -722,26 +724,26 @@ app.post('/trimite-email', async (req, res) => {
 
   try {
     // Verificare configurare ÎNAINTE de a crea transportor
-    if (!process.env.EMAIL_USER || !process.env.EMAIL_PASSWORD) {
+    if (!emailUser || !emailPassword) {
       console.error('❌ Email configuration MISSING! Set EMAIL_USER and EMAIL_PASSWORD in .env file');
       return res.status(500).json({ success: false, mesaj: 'Serviciul de email nu este configurat pe server. Contactează administratorul.' });
     }
 
-    console.log('EMAIL_USER set:', process.env.EMAIL_USER ? 'DA' : 'NU');
+    console.log('EMAIL_USER set:', emailUser ? 'DA' : 'NU');
 
     // Configurare Nodemailer
     const transportor = nodemailer.createTransport({
       service: 'gmail',
       auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASSWORD
+        user: emailUser,
+        pass: emailPassword
       }
     });
 
     // Opțiuni email
     const optiuniEmail = {
-      from: process.env.EMAIL_USER,
-      to: process.env.EMAIL_USER, // Trimite la adresa ta
+      from: emailUser,
+      to: emailUser, // Trimite la adresa ta
       replyTo: email, // Utilizatorul poate raspunde direct
       subject: `Mesaj nou de la ${nume}`,
       html: `
@@ -773,6 +775,12 @@ app.post('/trimite-email', async (req, res) => {
     res.json({ success: true, mesaj: 'Email trimis cu succes!' });
   } catch (eroare) {
     console.error('Eroare la trimiterea emailului:', eroare);
+    if (eroare?.message && eroare.message.includes('Invalid login')) {
+      return res.status(500).json({
+        success: false,
+        mesaj: 'Autentificare Gmail eșuată. Verifică EMAIL_USER și EMAIL_PASSWORD (App Password Gmail, fără spații).'
+      });
+    }
     res.status(500).json({ success: false, mesaj: 'Eroare la trimiterea emailului: ' + eroare.message });
   }
 });
@@ -798,4 +806,3 @@ app.listen(PORT, '0.0.0.0', () => {
 process.on('uncaughtException', (err) => {
   console.error('Uncaught Exception:', err);
 }); 
-

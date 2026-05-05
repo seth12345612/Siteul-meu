@@ -270,14 +270,14 @@
 
       if (config) {
         // Actualizăm valorile în modal
-        document.getElementById('diff-usor-bani').innerHTML = `💰 <strong>Bani:</strong> ${config.usor.bani} RON`;
-        document.getElementById('diff-usor-fericire').innerHTML = `😊 <strong>Fericire:</strong> ${config.usor.fericire}`;
+        document.getElementById('diff-usor-bani').innerHTML = `💰 <strong style="text-shadow: 0 1px 3px rgba(0,0,0,0.8);">Bani:</strong>  <div style="text-shadow: 0 1px 3px rgba(0,0,0,1.2);">${config.usor.bani} RON</div>`;
+        document.getElementById('diff-usor-fericire').innerHTML = `😊 <strong style="text-shadow: 0 1px 3px rgba(0,0,0,0.8);">Fericire:</strong> <div style="text-shadow: 0 1px 3px rgba(0,0,0,1.2);">${config.usor.fericire}</div>`;
 
-        document.getElementById('diff-mediu-bani').innerHTML = `⚖️ <strong>Bani:</strong> ${config.mediu.bani} RON`;
-        document.getElementById('diff-mediu-fericire').innerHTML = `😊 <strong>Fericire:</strong> ${config.mediu.fericire}`;
+        document.getElementById('diff-mediu-bani').innerHTML = `⚖️ <strong style="text-shadow: 0 1px 3px rgba(0,0,0,0.8);">Bani:</strong> <div style="text-shadow: 0 1px 3px rgba(0,0,0,1.2);">${config.mediu.bani} RON</div>`;
+        document.getElementById('diff-mediu-fericire').innerHTML = `😊 <strong style="text-shadow: 0 1px 3px rgba(0,0,0,0.8);">Fericire:</strong> <div style="text-shadow: 0 1px 3px rgba(0,0,0,1.2);">${config.mediu.fericire}</div>`;
 
-        document.getElementById('diff-greu-bani').innerHTML = `📉 <strong>Bani:</strong> ${config.greu.bani} RON`;
-        document.getElementById('diff-greu-fericire').innerHTML = `😊 <strong>Fericire:</strong> ${config.greu.fericire}`;
+        document.getElementById('diff-greu-bani').innerHTML = `📉 <strong style="text-shadow: 0 1px 3px rgba(0,0,0,0.8);">Bani:</strong> <div style="text-shadow: 0 1px 3px rgba(0,0,0,1.2);">${config.greu.bani} RON</div>`;
+        document.getElementById('diff-greu-fericire').innerHTML = `😊 <strong style="text-shadow: 0 1px 3px rgba(0,0,0,0.8);">Fericire:</strong> <div style="text-shadow: 0 1px 3px rgba(0,0,0,1.2);">${config.greu.fericire}</div>`;
       } else {
         console.error("Nu s-a găsit configurația pentru scenariul:", scenarioKey);
       }
@@ -310,40 +310,40 @@
       usor: {
         titlu: "Dificultate: UȘOR",
         detalii: `
-          <strong>Ce se schimbă:</strong>
-          <ul style="margin-top: 0.5rem; padding-left: 1.5rem;">
+          <strong style="color: var(--text-main);">Ce se schimbă:</strong>
+          <ul style="margin-top: 0.5rem; padding-left: 1.5rem; color: var(--text-main);">
             <li><strong>Venituri lunare:</strong> +30% (mai mulți bani)</li>
             <li><strong>Fericire/Energie:</strong> +30% (recuperezi mai ușor)</li>
             <li><strong>Bani de start:</strong> +30% (începi cu mai mulți)</li>
             <li><strong>Impactul deciziilor:</strong> Deciziile greșite te costă mai puțin</li>
           </ul>
-          <strong style="display: block; margin-top: 1rem; color: var(--secondary-glow);">🎯 Ideal pentru:</strong> Debutanți, testarea mecanicilor, relaxare.
+          <strong style="display: block; margin-top: 1rem; color: var(--text-main);">🎯 Ideal pentru:</strong> <div style="color: var(--text-main);">Debutanți, testarea mecanicilor, relaxare.</div>
         `
       },
       mediu: {
         titlu: "Dificultate: MEDIU (Normal)",
         detalii: `
-          <strong>Ce se schimbă:</strong>
-          <ul style="margin-top: 0.5rem; padding-left: 1.5rem;">
+          <strong style="color: var(--text-main);">Ce se schimbă:</strong>
+          <ul style="margin-top: 0.5rem; padding-left: 1.5rem; color: var(--text-main);">
             <li><strong>Venituri lunare:</strong> Normale</li>
             <li><strong>Fericire/Energie:</strong> Normale</li>
             <li><strong>Bani de start:</strong> Normali</li>
             <li><strong>Impactul deciziilor:</strong> Echilibrat - consecințele sunt reale</li>
           </ul>
-          <strong style="display: block; margin-top: 1rem; color: var(--secondary-glow);">🎯 Ideal pentru:</strong> Experiența standard, jucători moderat experimentați.
+          <strong style="display: block; margin-top: 1rem; color: var(--text-main);">🎯 Ideal pentru:</strong> <div style="color: var(--text-main);">Experiența standard, jucători moderat experimentați.</div>
         `
       },
       greu: {
         titlu: "Dificultate: GREU (Provocare)",
         detalii: `
-          <strong>Ce se schimbă:</strong>
-          <ul style="margin-top: 0.5rem; padding-left: 1.5rem;">
+          <strong style="color: var(--text-main);">Ce se schimbă:</strong>
+          <ul style="margin-top: 0.5rem; padding-left: 1.5rem; color: var(--text-main);">
             <li><strong>Venituri lunare:</strong> -30% (mai puțini bani)</li>
             <li><strong>Fericire/Energie:</strong> -30% (recuperezi mai greu)</li>
             <li><strong>Bani de start:</strong> -30% (începi cu mai puțini)</li>
             <li><strong>Impactul deciziilor:</strong> Greșelile te costă mult - prudență necesară!</li>
           </ul>
-          <strong style="display: block; margin-top: 1rem; color: var(--secondary-glow);">🎯 Ideal pentru:</strong> Jucători veterani, cine vrea o provocare reală.
+          <strong style="display: block; margin-top: 1rem; color: var(--text-main);">🎯 Ideal pentru:</strong> <div style="color: var(--text-main);">Jucători veterani, cine vrea o provocare reală.</div>
         `
       }
     };
@@ -1293,7 +1293,7 @@
     <section class="intro-card">
       <div class="welcome-section theme-accent-box" style="padding: 1.5rem; border-radius: 0.75rem; margin-bottom: 2rem;">
         <h2 style="margin-top: 0; color: var(--secondary-glow);">🎓 Bun venit!</h2>
-        <p style="font-size: 1.05rem; color: #cbd5f5; margin: 0;">Învață să îți gestionezi banii și energia pe parcursul
+        <p style="font-size: 1.05rem; text-shadow: 0 1px 3px rgba(0,0,0,0.8); margin: 0;">Învață să îți gestionezi banii și energia pe parcursul
           a 12 luni.</p>
       </div>
 
@@ -1309,19 +1309,19 @@
           <div class="rule-item">
             <span class="theme-icon-glow" style="font-size: 1.5rem;">🎯</span>
             <h4 style="color: var(--secondary-glow); margin: 0.5rem 0;">Obiectivul</h4>
-            <p style="font-size: 0.9rem; color: #cbd5f5;">Trebuie să ajungi la finalul celor 12 luni fără ca soldul tău
+            <p style="font-size: 0.9rem; text-shadow: 0 1px 3px rgba(0,0,0,0.8);">Trebuie să ajungi la finalul celor 12 luni fără ca soldul tău
               bancar să scadă sub 0 și fără să îți epuizezi fericirea.</p>
           </div>
           <div class="rule-item">
             <span class="theme-icon-glow" style="font-size: 1.5rem;">⚖️</span>
             <h4 style="color: var(--secondary-glow); margin: 0.5rem 0;">Echilibrul</h4>
-            <p style="font-size: 0.9rem; color: #cbd5f5;">Fiecare alegere are consecințe. Poți câștiga bani sacrificând
+            <p style="font-size: 0.9rem; text-shadow: 0 1px 3px rgba(0,0,0,0.8);">Fiecare alegere are consecințe. Poți câștiga bani sacrificând
               fericirea sau poți investi în starea ta de bine, dar cu un cost financiar.</p>
           </div>
           <div class="rule-item">
             <span class="theme-icon-glow" style="font-size: 1.5rem;">📅</span>
             <h4 style="color: var(--secondary-glow); margin: 0.5rem 0;">Fluxul Lunii</h4>
-            <p style="font-size: 0.9rem; color: #cbd5f5;">La începutul fiecărei luni se aplică automat venitul și
+            <p style="font-size: 0.9rem; text-shadow: 0 1px 3px rgba(0,0,0,0.8);">La începutul fiecărei luni se aplică automat venitul și
               cheltuielile fixe (chirie, utilități), urmate de un eveniment surpriză.</p>
           </div>
         </div>
@@ -1329,7 +1329,7 @@
         <div class="steps-box theme-accent-box"
           style="padding: 1rem; border-radius: 0.75rem; margin-bottom: 2rem; text-align: left;">
           <h4 style="margin-bottom: 0.5rem; color: var(--secondary-glow);">🚀 Pașii tăi:</h4>
-          <ol style="font-size: 0.9rem; color: #cbd5f5; padding-left: 1.2rem;">
+          <ol style="font-size: 0.9rem; text-shadow: 0 1px 3px rgba(0,0,0,1); padding-left: 1.2rem;">
             <li><strong>Alege un scenariu</strong> de viață care ți se potrivește (Cămin, Chirie sau Garsonieră).</li>
             <li><strong>Selectează dificultatea</strong> pentru a ajusta provocarea financiară.</li>
             <li><strong>Ia decizii înțelepte</strong> în fiecare lună pentru a-ți păstra resursele la un nivel optim.

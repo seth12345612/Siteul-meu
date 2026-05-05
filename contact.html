@@ -141,8 +141,9 @@
           body: JSON.stringify(dateFormular)
         });
 
+        const data = await raspuns.json().catch(() => ({}));
+
         if (raspuns.ok) {
-          const data = await raspuns.json();
           statusMesaj.style.display = 'block';
           statusMesaj.className = 'status-message success';
           statusMesaj.innerText = '✅ Mesajul a fost trimis cu succes! Îți vom răspunde în curând.';
@@ -153,7 +154,8 @@
           butonTrimite.style.opacity = '1';
           butonTrimite.innerText = textOriginal;
         } else {
-          throw new Error('Eroare la trimitere: ' + raspuns.status);
+          const mesajEroare = data?.mesaj || data?.message || ('Eroare la trimitere: ' + raspuns.status);
+          throw new Error(mesajEroare);
         }
       } catch (eroare) {
         statusMesaj.style.display = 'block';

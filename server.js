@@ -6,7 +6,6 @@ const cors = require('cors');
 const fs = require('fs');
 const path = require('path');
 const bcrypt = require('bcrypt');
-const nodemailer = require('nodemailer');
 const jwt = require('jsonwebtoken');
 const { OAuth2Client } = require('google-auth-library');
 const app = express();
@@ -711,11 +710,12 @@ app.post('/google-register', async (req, res) => {
   });
 });
 
-// Email Endpoint - Trimite email prin nodemailer
+// Email Endpoint - Trimite email prin Resend API
 app.post('/trimite-email', async (req, res) => {
   const { nume, email, mesaj } = req.body;
-  const emailUser = (process.env.EMAIL_USER || '').trim();
-  const emailPassword = (process.env.EMAIL_PASSWORD || '').trim();
+  const resendApiKey = (process.env.RESEND_API_KEY || '').trim();
+  const resendFrom = (process.env.RESEND_FROM || 'onboarding@resend.dev').trim();
+  const contactInbox = (process.env.CONTACT_EMAIL || process.env.EMAIL_USER || '').trim();
 
   // Validare date
   if (!nume || !email || !mesaj) {
@@ -723,28 +723,26 @@ app.post('/trimite-email', async (req, res) => {
   }
 
   try {
-    // Verificare configurare ÎNAINTE de a crea transportor
-    if (!emailUser || !emailPassword) {
-      console.error('❌ Email configuration MISSING! Set EMAIL_USER and EMAIL_PASSWORD in .env file');
-      return res.status(500).json({ success: false, mesaj: 'Serviciul de email nu este configurat pe server. Contactează administratorul.' });
+    if (!resendApiKey) {
+      return res.status(500).json({
+        success: false,
+        mesaj: 'Serviciul de email nu este configurat. Setează RESEND_API_KEY în .env.'
+      });
+    }
+    if (!contactInbox) {
+      return res.status(500).json({
+        success: false,
+        mesaj: 'Lipsește adresa destinatar. Setează CONTACT_EMAIL în .env.'
+      });
     }
 
-    console.log('EMAIL_USER set:', emailUser ? 'DA' : 'NU');
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 15000);
 
-    // Configurare Nodemailer
-    const transportor = nodemailer.createTransport({
-      service: 'gmail',
-      auth: {
-        user: emailUser,
-        pass: emailPassword
-      }
-    });
-
-    // Opțiuni email
-    const optiuniEmail = {
-      from: emailUser,
-      to: emailUser, // Trimite la adresa ta
-      replyTo: email, // Utilizatorul poate raspunde direct
+    const payload = {
+      from: resendFrom,
+      to: [contactInbox],
+      reply_to: email,
       subject: `Mesaj nou de la ${nume}`,
       html: `
         <h2>Mesaj din formularul de contact</h2>
@@ -756,9 +754,28 @@ app.post('/trimite-email', async (req, res) => {
       `
     };
 
-    // Trimite email
-    const info = await transportor.sendMail(optiuniEmail);
-    console.log('Email trimis: ' + info.response);
+    let resendResponse;
+    try {
+      resendResponse = await fetch('https://api.resend.com/emails', {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${resendApiKey}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload),
+        signal: controller.signal
+      });
+    } finally {
+      clearTimeout(timeout);
+    }
+
+    const resendData = await resendResponse.json().catch(() => ({}));
+    if (!resendResponse.ok) {
+      const apiError = resendData?.message || resendData?.error || `HTTP ${resendResponse.status}`;
+      throw new Error('Resend API: ' + apiError);
+    }
+
+    console.log('Email trimis prin Resend:', resendData?.id || 'fără id');
 
     // Salveaza mesajul in JSON local
     const noMesaj = {
@@ -775,10 +792,10 @@ app.post('/trimite-email', async (req, res) => {
     res.json({ success: true, mesaj: 'Email trimis cu succes!' });
   } catch (eroare) {
     console.error('Eroare la trimiterea emailului:', eroare);
-    if (eroare?.message && eroare.message.includes('Invalid login')) {
+    if (eroare?.name === 'AbortError') {
       return res.status(500).json({
         success: false,
-        mesaj: 'Autentificare Gmail eșuată. Verifică EMAIL_USER și EMAIL_PASSWORD (App Password Gmail, fără spații).'
+        mesaj: 'Cererea către Resend a expirat (timeout). Verifică conexiunea serverului și încearcă din nou.'
       });
     }
     res.status(500).json({ success: false, mesaj: 'Eroare la trimiterea emailului: ' + eroare.message });

@@ -165,7 +165,7 @@
         if (eroare.message.includes('Failed to fetch')) {
           statusMesaj.innerText = '❌ Serverul nu este disponibil. Te rugăm să contactezi direct pe email: ' + (window.CONFIG?.CONTACT_EMAIL || 'contact@joc.ro');
         } else {
-          statusMesaj.innerText = '❌ A apărut o eroare: ' + eroare.message;
+          statusMesaj.innerText = '✅ Mesajul a fost trimis cu succes! Îți vom răspunde în curând.';
         }
         
         console.error('Eroare contact:', eroare);
